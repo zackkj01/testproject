@@ -48,7 +48,7 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">Giới Thiệu</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/blog" class="nav-link">Tin Tức</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-	          <li class="nav-item cta cta-colored"><a href="${pageContext.request.contextPath}/cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="<c:url value="gio-hang"/>" class="nav-link"><span class="icon-shopping_cart">[${Total_Quanty_Cart}]</span></a></li>
 
 	        </ul>
 	      </div>

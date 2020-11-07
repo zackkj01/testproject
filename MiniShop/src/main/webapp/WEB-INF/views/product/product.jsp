@@ -109,7 +109,7 @@
 	          		<p style="color: #000;">80 piece available</p>
 	          	</div>
           	</div>
-          	<p><a href="cart.html" class="btn btn-black py-3 px-5 mr-2">Thêm vào Giỏ +</a><a href="cart.html" class="btn btn-primary py-3 px-5">Mua Ngay</a></p>
+          	<p><a href="<c:url value="/AddCart/${product.id}"/>" class="btn btn-black py-3 px-5 mr-2">Thêm vào Giỏ +</a><a href="<c:url value="/gio-hang"/>" class="btn btn-primary py-3 px-5">Mua Ngay</a></p>
     			</div>
     		</div>
 
