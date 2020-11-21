@@ -22,7 +22,7 @@ public void setProductService(ProductService ps) {
 	@RequestMapping(value = "/product/{id}")
 	public String listProducts(@PathVariable("id") int id,Model model) {
 		model.addAttribute("product",this.productService.getProductById(id));
-	
+		model.addAttribute("getProductRelative",this.productService.getProductRelative(id));
 		return "/product/product";
 	}
 }

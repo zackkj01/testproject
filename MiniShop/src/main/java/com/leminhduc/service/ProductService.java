@@ -11,6 +11,7 @@ public interface ProductService {
 	public List<Product> getProductnew_shoes();
 	public Product getProductById(int id);
 	public Product findById(long productId);
+	public List<Product> getProductRelative(int id);
 
 
 

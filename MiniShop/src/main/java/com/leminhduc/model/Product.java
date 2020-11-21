@@ -1,15 +1,19 @@
 package com.leminhduc.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.leminhduc.model.Product;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Entity bean with JPA annotations Hibernate provides JPA implementation
@@ -22,6 +26,18 @@ public class Product {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="id")
+
+	private List<Relatedproduct> relative;
+	
+	public List<Relatedproduct> getRelative() {
+		return relative;
+	}
+	public void setRelative(List<Relatedproduct> relative) {
+		this.relative = relative;
+	}
 	@Column(name = "title")
     protected String title;
     @Column(name = "description")

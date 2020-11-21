@@ -31,4 +31,8 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Transactional
+	public List<Product> getProductRelative(int id) {
+		return this.productDAO.getProductRelative(id);
+	}
 }

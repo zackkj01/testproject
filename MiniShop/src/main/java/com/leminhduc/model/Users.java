@@ -7,6 +7,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
  
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "users", catalog = "testdb")
 public class Users implements java.io.Serializable {

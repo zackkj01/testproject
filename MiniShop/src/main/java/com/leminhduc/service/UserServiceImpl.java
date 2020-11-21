@@ -1,10 +1,12 @@
 package com.leminhduc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.leminhduc.dao.UserDao;
 import com.leminhduc.model.Users;
 
+@Repository
 public class UserServiceImpl implements UserService{
 
     @Autowired

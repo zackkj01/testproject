@@ -42,5 +42,15 @@ public class ProductDAOImpl implements ProductDAO {
 				logger.info("Product loaded successfully,Product detail="+ p);
 			return p;
 		}
+
+	     @Transactional
+	     @SuppressWarnings("unchecked")
+		public List<Product> getProductRelative(int id) {
+	 		Session session = this.sessionFactory.getCurrentSession();	 
+	 		List <Product> productsList= session.createQuery("FROM Product p where id in (from p.relative where id_product=" + id + ")").list();
+	 		for (Product p : productsList) {
+	 			logger.info("Product List::" + p);} 
+	         return productsList;
+		}
 }
 
