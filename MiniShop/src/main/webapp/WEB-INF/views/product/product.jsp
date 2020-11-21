@@ -30,24 +30,9 @@
     <link rel="stylesheet" href="../resources/css/style.css">
   </head>
   <body class="goto-here">
-
-
-
-  <!-- END nav -->
-
-    <div class="hero-wrap hero-bread" style="background-image: url('../resources/images/bg_6.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang Chủ</a></span> <span>Cửa Hàng</span></p>
-            <h1 class="mb-0 bread">Chi Tiết Sản Phẩm</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- END  -->
-
+    <!-- nav -->
+     	<jsp:include page = "../share/header_con.jsp"></jsp:include>
+    <!-- nav end -->
     <section class="ftco-section">
     	<div class="container">
     		<div class="row">

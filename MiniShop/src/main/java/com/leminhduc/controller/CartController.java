@@ -50,7 +50,7 @@ public class CartController {
 		return "redirect:"+request.getHeader("Referer");
 	}
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "EditCart/{id}/{quanty}", method = RequestMethod.GET)
+	@RequestMapping(value = "Editcart/id={id}/{quanty}", method = RequestMethod.GET)
 	public String EditCert(HttpServletRequest request,HttpSession session,@PathVariable int id,@PathVariable int quanty) {
 		HashMap<Integer,Cart> cart=(HashMap<Integer,Cart>)session.getAttribute("CART");
 		if(cart==null) {

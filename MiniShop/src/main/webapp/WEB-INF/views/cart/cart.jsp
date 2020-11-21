@@ -30,68 +30,9 @@
     <link rel="stylesheet" href="resources/css/style.css">
   </head>
   <body class="goto-here">
-		<div class="py-1 bg-black">
-    	<div class="container">
-    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
-	    		<div class="col-lg-12 d-block">
-		    		<div class="row d-flex">
-		    			<div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-						    <span class="text">+ 1235 2355 98</span>
-					    </div>
-					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">youremail@email.com</span>
-					    </div>
-					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-						    <span class="text">3-5 Business days delivery &amp; Free Returns</span>
-					    </div>
-				    </div>
-			    </div>
-		    </div>
-		  </div>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Minishop</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
-              </div>
-            </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-
-    <div class="hero-wrap hero-bread" style="background-image: url('resources/images/bg_6.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
-            <h1 class="mb-0 bread">My Wishlist</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  	<!-- nav -->
+      	<jsp:include page = "../share/header_con.jsp"></jsp:include>
+    <!-- nav end -->
     <section class="ftco-section ftco-cart">
 			<div class="container">
 				<div class="row">
@@ -111,7 +52,7 @@
 						    <tbody>
 						    <c:forEach var="cart" items="${CART}">
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="<c:url value="/Delete/${cart.key}"/>"><span class="ion-ios-close"></span></a></td>
+						        
 						        
 						        <td class="image-prod"><div class="img" style="background-image:url(resources/${cart.value.product.image});"></div></td>
 						        
@@ -124,15 +65,23 @@
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100">
+					             	<input type="text" id="quanty-cart-${cart.key}" name="quantity" class="quantity form-control input-number" value="${cart.value.quanty}" min="1" max="100">
 					          	</div>
 					          </td>
 						        
-						        <td class="total"><fmt:formatNumber value="${Total_Price_Cart}"/></td>
+						        <td class="total"><fmt:formatNumber value="${cart.value.total_price}"/></td>
+						        <td class="product-remove"><a href="<c:url value="/Delete/${cart.key}"/>"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a data-id="${cart.key}" class="edit-cart"><span class="ion-ios-close"></span></a></td>
 						      </tr><!-- END TR-->
 
 						     </c:forEach>
 						    </tbody>
+						    
+						  </table>
+						  <table class="table">
+						  <tr class="text-center">
+						        <th>Tổng tiền:<fmt:formatNumber value="${Total_Price_Cart}"/></th>
+						      </tr>
 						  </table>
 					  </div>
     			</div>
@@ -238,42 +187,14 @@
   <script src="resources/js/google-map.js"></script>
   <script src="resources/js/main.js"></script>
 
-  <script>
-		$(document).ready(function(){
-
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
-
-		          
-		            // Increment
-		        
-		    });
-
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
-		    
-		});
-	</script>
+ <script>
+ 		$(".edit-cart").on("click",function(){
+ 			var id=$(this).data("id");
+ 			var quanty=$("#quanty-cart-"+id).val();
+ 			window.location="Editcart/"+"id="+id+"/"+quanty;
+ 		});
+ 
+ </script>
     
   </body>
 </html>
